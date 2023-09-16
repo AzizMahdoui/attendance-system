@@ -1,0 +1,29 @@
+.employee-card-container{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        padding: 25px;
+        width: 200px;
+        height: 220px;
+        margin: 15px;
+        border-radius: 15px;
+        background-color: var(--background-shade-300);
+}
+.employee-card-container>img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+}
+.employee-card-container>p{
+}
+.name{
+        font-weight: 700;
+}
+.position{
+        color: rgb(113, 118, 118);
+        font-weight: 70;
+}
+.details-link{
+        color: var(--primary-color-shade-700);
+}

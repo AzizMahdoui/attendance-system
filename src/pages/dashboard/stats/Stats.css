@@ -1,0 +1,13 @@
+.daily-stats-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.stat-card>label{
+    font-size: 36px;
+    font-weight: 700;
+}
+.stat-card{
+    width: 150px;
+}

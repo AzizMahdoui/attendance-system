@@ -1,0 +1,48 @@
+.history-card{
+    background-color: var(--background-shade-400);
+    width: 320px;
+    padding: 25px;
+    border-radius: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.attendance-history{
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+.history{
+    width: 100%;
+    background-color: var(--background-shade-200);
+    padding: 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+
+}
+.day-status{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+.checkout-label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.checkout-label>p{
+        
+}
+.checkin-checkout-label-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+}

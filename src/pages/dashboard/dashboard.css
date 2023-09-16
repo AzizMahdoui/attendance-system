@@ -1,0 +1,108 @@
+/* Dashboard.css */
+
+  
+.dashboard {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .dialog {
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dashboard-layout {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .dialog p {
+    margin-bottom: 20px;
+  }
+  
+  .dialog button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dialog button:hover {
+    background-color: #0056b3;
+  }
+  
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .data-table th {
+    background-color: #333;
+    color: white;
+  }
+  .data-table td{
+    color: black;
+  }
+  
+  .data-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .data-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  /* Add these classes to your existing Dashboard.css */
+
+/* Default style for the status cell */
+.status-pending {
+color: rgb(126, 126, 14);  }
+  
+  .status-checked-in {
+    color:green;
+  }
+  
+   

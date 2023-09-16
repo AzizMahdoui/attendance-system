@@ -1,0 +1,261 @@
+.gmail-content{
+    margin-top: 6rem !important;
+    margin: 0rem auto; 
+    background-color: white;
+    max-width: 450px;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+   
+
+}
+.label-container {
+    position: relative;
+  }
+.label-email-focused{
+    font-family: roboto, "Noto Sans Myanmar UI", arial, sans-serif;
+    color: rgb(26, 115, 232) !important;
+    background-color: white;
+    transform: scale(0.75) translate(-52px, -39px);
+    padding: 0 10px;
+}
+.erreur-label{
+    color: red !important ;
+}
+.erreur-input{
+    border: 1px solid red !important;
+}
+.label-password-focused{
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+    color:rgb(26,115,232) !important;
+    background-color: white;
+    transform: scale(0.75) translate(-40px , -39px);
+    padding: 0 10PX;
+}
+  
+  
+  .label-container .filled-label {
+    /* Additional styles for the filled label */
+    /* Example: */
+    color: green;
+  }
+@font-face{
+    font-family:'Google Sans';
+    font-style:normal;
+    font-weight:500;
+    src:url(../../../assets/font/gmailfonts/4UabrENHsxJlGDuGo1OIlLU94YtzCwY.woff2)format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face{
+    font-family:'Roboto';
+    font-style:normal;
+    font-weight:400;
+    src:url(../../../assets/font/gmailfonts/v18/KFOmCnqEu92Fr1Mu4mxK.woff2)format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+    font-family:'Google Sans';
+    font-style:normal;
+    font-weight:400;
+    src:url(../../../assets/font/gmailfonts4UaGrENHsxJlGDuGo1OIlL3Owp4.woff2)format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+    font-family:'Roboto';
+    font-style:normal;
+    font-weight:500;
+    src:url(../../../assets/font/gmailfonts/KFOlCnqEu92Fr1MmEU9fBBc4.woff2)format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+.gmaillogin{
+    margin: 0rem auto; 
+    max-width: 450px;
+}
+body{
+    background-color: #fff !important;
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif !important;
+}
+.header-gmail{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    height: 36px;
+   
+}
+.header-gmail > svg{
+   
+    width: 14px;
+    height: 14px;
+   margin-left: 1rem;
+}
+.header-gmail > span{
+    color: rgb(95,99,104);
+    font-size: 14px;
+    height: 14px;
+    margin-left: 10px;
+}
+.main-container > h1 {
+    display: flex;
+     justify-content: center;
+     color: rgb(32,33,36);
+     padding-bottom: 0;
+     padding-top: 3rem;
+     font-family: Google Sans,Noto Sans Myanmar UI,arial,sans-serif;
+     font-size: 24px;
+     font-weight: 400;
+     line-height: 1.3333;
+     margin-bottom: 0;
+     margin-top: 0;
+     word-break: break-word;
+
+}
+.main-container > span {
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+    display: flex;
+    justify-content: center;
+    color: rgb(32,33,36);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    line-height: 1.5;
+    padding-bottom: 0;
+    padding-top: 8px;
+}
+.main-container  label {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    color: rgb(95,99,104);
+    font-size: 16px;
+    transition: transform 200ms cubic-bezier(0.4,0,0.2,1),opacity 200ms cubic-bezier(0.4,0,0.2,1);
+}
+.footer-content > ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+.footer-content > ul > li {
+    list-style: none;
+    text-decoration: none;
+    
+}
+.footer-content{
+    margin-top: 3rem;
+}
+.footer-content > ul > li > a {
+    padding: 1rem;
+    list-style: none;
+    text-decoration: none;
+    color: rgb(60,64,67);
+    font-weight: 400;
+    outline: none;
+    font-size: 12px;
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+}
+.main-container input {
+   width: 100%;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    height: 54px;
+    margin: 1px 1px 0 1px;
+    padding: 13px 15px;
+    z-index: 1;
+    border: 1px solid #dadce0;
+    
+}
+.underdescription{
+    margin-bottom: 3rem;
+    align-items: center;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+}
+.description{
+    margin-top: 42px;
+    color: rgb(95,99,104);
+    font-size: 14px;
+    line-height: 1.4286;
+    margin-top: 32px;
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+}
+ input:focus{
+    outline: none;
+    border: 2px solid  rgb(26,115,232);
+ }
+ .input{
+    margin-right: 2px;
+    position: relative;
+    margin-top: 24px !important;
+    border-radius: 4px;
+ }
+ #root > div > div.gmail-content > div.main-container > div:nth-child(4) label {
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+    color:rgb(26,115,232);
+    background-color: white;
+    transform: scale(0.75) translate(-40px , -39px) !important;
+    padding: 0 10PX;
+ }
+ #root > div > form > div.main-container > div:nth-child(4):has(input:focus) > label {
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+    color:rgb(26,115,232);
+    background-color: white;
+    transform: scale(0.75) translate(-40px , -39px) !important;
+    padding: 0 10PX;
+ }
+ 
+
+.input:focus-within  label  {
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+    color:rgb(26,115,232);
+    background-color: white;
+    transform: scale(0.75) translate(-52px , -39px);
+    padding: 0 10PX;
+   
+}
+.main-container{
+    padding: 0 40px;
+}
+
+#root > div > div.main-container > div.input-container > div{
+    position: relative;
+} 
+.input-container{
+    margin-top: 24px !important;
+
+}
+.underdescription > span {
+    color: rgb(26,115,232);
+    font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif !important;
+    font-size: 1rem;
+    letter-spacing: .0107142857em;
+    font-weight: 500;
+    
+}
+.underdescription  button {
+    font-weight: bold;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+     background-color: rgb(26,115,232);
+     border: none;
+     border-radius: 4px;
+    height: 38px;
+    width: 96.93px;
+    color: #fff;
+}
+
+
+div.error:has(input:focus)>label{
+    color: rgb(217,48,37) !important;
+
+} 
+
+div.error:has(input:focus) > input{
+    border: 1px solid rgb(217,48,37)!important;
+}
+
+
+div.error:has(input) > input{
+    border: 1px solid rgb(217,48,37)!important;
+}
+
+
+
