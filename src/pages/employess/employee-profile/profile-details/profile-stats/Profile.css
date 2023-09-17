@@ -19,11 +19,14 @@
     background-color: var(--background-shade-500);
     border-radius: 50%;
 padding: 10px;}
-label{
-    color: rgb(165, 167, 169);
-}
+
 .role-value{
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+.role-value>label{
+    
+        color: rgb(165, 167, 169);
+    
 }

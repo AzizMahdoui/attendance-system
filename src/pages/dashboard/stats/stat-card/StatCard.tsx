@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react'
 
 interface Card{
-        label:String
-        icon:ReactNode,
-        value:Number
+        label:String;
+        icon:ReactNode;
+        value:Number;
 }
 const StatCard = ({label,icon,value}:Card) => {
   return (
-    <div className='stat-card'>
+    <div className='daily-stats-card'>
             <div className='label-icon'>
                     <label>{label}</label>
                     {icon}

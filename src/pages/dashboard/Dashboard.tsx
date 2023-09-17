@@ -41,13 +41,21 @@ const Dashboard = () => {
 
   const handleChange = (e) => {
     setDate(new Date(e.target.value));
+    console.log(date)
   };
 
  
-
+const dailyStats = {
+   
+    totalEmployees: 30,
+    onTimeEmployees: 18,
+    lateEmployees: 7,
+    absences:15, 
+    
+}
   return (
     <div className="dashboard">
-      <Stats></Stats>
+      <Stats date={date} dailyStats ={dailyStats}></Stats>
       <div className="dashboard-layout">
         <input onChange={handleChange} type="date" value={date.toISOString().split("T")[0]} />
         <button>Submit</button>
