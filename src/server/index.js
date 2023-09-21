@@ -8,7 +8,8 @@ import http from "http";
 import dailyAttendanceRouter from "./routers/dailyData.router.js";
 import shiftRouter from "./routers/shiftRouter.js";
 import { initializeSocketIO } from "./controllers/socketController/socketServices.js";
-
+import { ScheduleRouter } from "./routers/scheduleRouter.js";
+import StatsRouter from "./routers/StatsRouter.js";
 const app = express();
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
@@ -28,6 +29,9 @@ app.use(cors(corsOptions));
 app.use("/", employeeRouter);
 app.use("/", dailyAttendanceRouter);
 app.use("/", shiftRouter);
+app.use("/",ScheduleRouter)
+app.use("/",StatsRouter)
+
 initializeSocketIO(server)
 
 server.listen(port, () => {

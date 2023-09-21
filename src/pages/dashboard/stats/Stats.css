@@ -1,6 +1,7 @@
 .daily-stats{
     display: flex;
     flex-direction: row;
+    
     justify-content: space-between;
     
 }
@@ -13,16 +14,23 @@
     font-size: 36px;
     font-weight: 700;
 }
+h2{
+    font-size: 40px;
+}
+.daily-stats-card>h3{
+    font-size: 45px;
+}
 .daily-stats-card{
-    width: 220px;
+    width: 180px;
     background-color: var(--background-shade-400);
     padding: 20px;
-    margin: 0 20px;
+    margin: 10px 10px;
     height: 140px;
-    border-radius: 15px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 gap: 25px;
 }
 .label-icon{
@@ -32,9 +40,10 @@ gap: 25px;
     gap: 25px;
 }
 .header-icon{
-    background-color: var(--background-shade-400);
+    background-color: var(--background-shade-900);
     padding: 5px;
     border-radius: 50%;
+    color: var(--background-shade-100);
 }
 .date{
     display: flex;
@@ -45,5 +54,8 @@ gap: 25px;
 .date-label{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
+}
+.date>p{
+    font-size: 40px;
 }

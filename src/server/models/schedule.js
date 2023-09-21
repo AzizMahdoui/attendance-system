@@ -1,14 +1,15 @@
 import mongoose from "mongoose";
 
 const scheduleSchema = mongoose.Schema({
-      employee: { type: Schema.Types.ObjectId, ref: 'Employee' }, // Reference to the Employee model
-      shift: { type: Schema.Types.ObjectId, ref: 'Shift' }, // Reference to the Shift model
-      checkInTime: { type: Date }, // Check-in time for the employee
-      checkOutTime: { type: Date },
+      date:{type:String,required:true},
+      employee: { type: mongoose.Schema.Types.ObjectId, ref: 'Employee' }, 
+      shift: { type: mongoose.Schema.Types.ObjectId, ref: 'Shift' }, 
+      checkInTime: { type: Date,required:true }, 
+      checkOutTime: { type: Date,required:true },
       attendanceStatus:{
         type:String,
-        enum:["late","in-time","absent"],
-        default:"absent"
+        enum:["Late","In-time","Absent"],
+        default:"Absent"
       }
 })
 

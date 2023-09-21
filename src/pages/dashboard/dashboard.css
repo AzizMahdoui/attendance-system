@@ -36,9 +36,12 @@
   
   .dashboard-layout {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    padding: 0;
     gap: 10px;
-    margin-bottom: 20px;
+    margin: 10px;
+    background-color: var(--background-shade-400);
+    border-radius: 10px;
   }
   .dialog p {
     margin-bottom: 20px;
@@ -59,41 +62,43 @@
   
   .data-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #f7f7f7;
+    border: none;
+    background-color: var(--background-shade-400);
     border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .data-table th,
+  .data-table th{
+    border-top: 1px solid var(--background-shade-700);
+    /* border-bottom: 1px solid var(--background-shade-700); */
+    padding: 15px;
+  }
   .data-table td {
-    padding: 12px;
-    text-align: left;
+    padding: 25px;
+    text-align: center;
+    color: white;
+    border-top: 1px solid var(--background-shade-700);
   }
   
   .data-table th {
-    background-color: #333;
-    color: white;
+    background-color: var(--background-shade-400);
+    color: var(--background-shade-700);
+    font-weight: 700;
+    font-size: 20px;
   }
-  .data-table td{
-    color: black;
+
+  
+  .data-table tbody tr {
+    background-color: var(--background-shade-400);
   }
   
-  .data-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .data-table tbody tr:hover {
+  /* .data-table tbody tr:hover {
     background-color: #ddd;
-  }
+    color:var(--background-shade-400)
+  } */
   
 
   
-  button:hover {
-    background-color: #0056b3;
-  }
+  
   
 
   /* Add these classes to your existing Dashboard.css */

@@ -1,0 +1,13 @@
+.title-date{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    padding:  10px;
+    align-items: center;
+    
+}
+.page-title>h2{
+        font-size: 34px;
+        margin-bottom: 10px;
+}

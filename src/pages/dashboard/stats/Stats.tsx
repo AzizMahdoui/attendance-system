@@ -16,14 +16,14 @@ interface DailyStats extends Document {
 const Stats = ({...props}) => {
   return (
     <div className='daily-stats'>
-      <div className='date'>
-          <GiBugleCall className='header-icon' size={60}/>
-          <div onClick={()=>console.log(props.date)} className='date-label'>
-          <h2>{props.date.toDateString()}</h2> {/* Convert date to a string for display */}
-          <h5>Daily Real Time Data</h5>
-          </div>
-        
-      </div>
+        <div className='date'>
+            <GiBugleCall className='header-icon' size={65}/>
+            <div onClick={()=>console.log(props.date)} className='date-label'>
+            <h2>{props.date.toDateString()}</h2> {/* Convert date to a string for display */}
+            <p>Daily Real Time Data</p>
+            </div>
+          
+        </div>
       <div className='stats-cards'>
             <StatCard label="Total Employees" value={props.dailyStats.totalEmployees} icon={<BsFillPersonBadgeFill size={30}/>}></StatCard>
             <StatCard label="On Time Employees" value={props.dailyStats.onTimeEmployees} icon={<RiMapPinTimeFill color='green' size={30}/>}></StatCard>

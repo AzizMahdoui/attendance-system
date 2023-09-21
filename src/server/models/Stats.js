@@ -5,7 +5,6 @@ const dailyStatsSchema = new mongoose.Schema({
             type:Number,
             default:0,
         },
-        totalEmployees: { type: Number, default: 0 }, 
         onTimeEmployees: { type: Number, default: 0 }, 
         lateEmployees: { type: Number, default: 0 },
         absences: { type: Number, default: 0 },
