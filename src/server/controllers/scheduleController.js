@@ -1,3 +1,4 @@
+import Shift from "../models/checkInCheckOut.js";
 import { Schedule } from "../models/schedule.js";
 import * as yup from "yup"
 // import { Router } from "express";
@@ -11,8 +12,14 @@ export const CreateSchedule = async(req,res)=>{
                 const {date,checkInTime,checkOutTime,employee} = req.body
                 await scheduleSchema.validate({checkInTime,checkOutTime,employee})
                 const SchedueledShift = new Schedule({date,employee,checkInTime,checkOutTime})
+                const newShift = new Shift({
+                  employeeId: employee._id,
+                  checkIn: checkInTime,
+                  checkOut: checkOutTime,
+                  status:"Scheduled"
+                });
+                SchedueledShift.shift = newShift._id
                 await SchedueledShift.save()
-                // console.log(SchedueledShift.checkinTime)
                 res.json({success:true,data:SchedueledShift,message:"A shift Scheduled for this Employee Successfully"})
               }catch (error) {
             if (error instanceof yup.ValidationError) {

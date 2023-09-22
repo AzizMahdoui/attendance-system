@@ -3,22 +3,17 @@ import { DailyDetails } from '../models/dailyDetails.js';
 import { DailyStats } from '../models/Stats.js';
 import { Schedule } from '../models/schedule.js';
 
-export const sendStats = async (req, res) => {
+export const sendStats = async (io,socket,formattedDate) => {
   try {
-    const { date } = req.body;
-    const formattedDate = new Date(date).toISOString().split("T")[0];
     const startOfDay = new Date(formattedDate);
     const endOfDay = new Date(formattedDate);
-    endOfDay.setDate(endOfDay.getDate() + 1);
 
-    // Find all scheduled shifts for the specified date
     const scheduledShifts = await Schedule.find({ date: formattedDate }).populate('employee');
 
     if (!scheduledShifts.length) {
-      return res.json({ message: "There is no schedule for this day", success: false });
+    io.to(socket.id).emit('error', 'There is no schedule for this');
     }
 
-    // Find all check-in/check-out records for the specified date
     const existingAttendance = await DailyDetails.find({
       date: { $gte: startOfDay, $lt: endOfDay },
     }).populate('employeeId');
@@ -31,7 +26,7 @@ export const sendStats = async (req, res) => {
     });
 
     scheduledShifts.forEach((shift) => {
-      const attendanceRecord = existingAttendance.find((record) => record.employeeId._id.toString() === shift.employee._id.toString());
+      const attendanceRecord = existingAttendance.find((record) => record.shiftOfTheDay.toString() === shift.shift.toString());
 
       if (attendanceRecord) {
         if (attendanceRecord.status === 'checked-in') {
@@ -49,23 +44,10 @@ export const sendStats = async (req, res) => {
       }
     });
 
-    // Create or update the dailyStats record
-    // const statsRecord = await DailyStats.findOneAndUpdate(
-    //   { day: formattedDate },
-    //   dailyStats,
-    //   { upsert: true, new: true }
-    // );
 
-    return res.json({ success: true, data: dailyStats });
+    io.to(socket.id).emit('daily_stats', { success: true, data:dailyStats });
   } catch (err) {
     console.error('Error fetching daily statistics:', err);
-    res.status(500).json({ success: false, message: 'An error occurred' });
+    io.to(socket.id).emit('error', 'Server Error');
   }
 };
-export const setUpDailyStatsStream = (io,socket)=>{
-    io.on('fetch_daily_data',async (date)=>{
-      const formattedDate = new Date(date).toISOString().split("T")[0];
-      const startOfDay = new Date(formattedDate);
-      const endOfDay = new Date(formattedDate);
-    })
-}

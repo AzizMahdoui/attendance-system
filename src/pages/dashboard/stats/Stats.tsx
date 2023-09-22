@@ -8,7 +8,7 @@ import "./Stats.css"
 interface DailyStats extends Document {
     totalEmployees?: number;
     onTimeEmployees?: number;
-    lateEmployees?: number;
+    lateEmployee?: number;
     absences?: number;
     day?: string;
     schedule?: string;
@@ -25,7 +25,7 @@ const Stats = ({...props}) => {
           
         </div>
       <div className='stats-cards'>
-            <StatCard label="Total Employees" value={props.dailyStats.totalEmployees} icon={<BsFillPersonBadgeFill size={30}/>}></StatCard>
+            <StatCard label="Total Employees" value={props.dailyStats.totalEmployee} icon={<BsFillPersonBadgeFill size={30}/>}></StatCard>
             <StatCard label="On Time Employees" value={props.dailyStats.onTimeEmployees} icon={<RiMapPinTimeFill color='green' size={30}/>}></StatCard>
             <StatCard label="Late Employees" value={props.dailyStats.lateEmployees} icon={<RiMapPinTimeFill  color='red'size={30}/>}></StatCard>
             <StatCard label="Absences" value={props.dailyStats.absences} icon={<FcLeave size={30}/>}></StatCard>

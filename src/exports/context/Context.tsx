@@ -15,13 +15,15 @@ export const DashboardProvider = ({ children }:{children:React.ReactNode})=> {
   const [dayToCheck, setDayToCheck] = useState("");
   const [employeeToVerify, setEmployeeToVerify] = useState("");
   const [shiftId, setShiftId] = useState("");
+  const [error,setError] = useState(null)
+  const [dailyStats,setDailyStats] = useState(null)
 
-  const dailyStats = {
-    totalEmployees: 30,
-    onTimeEmployees: 18,
-    lateEmployees: 7,
-    absences: 15,
-  };
+  // const dailyStats = {
+  //   totalEmployees: 30,
+  //   onTimeEmployees: 18,
+  //   lateEmployees: 7,
+  //   absences: 15,
+  // };
 
   return (
     <DashboardContext.Provider
@@ -40,7 +42,10 @@ export const DashboardProvider = ({ children }:{children:React.ReactNode})=> {
         setEmployeeToVerify,
         shiftId,
         setShiftId,
-        dailyStats,}}
+        dailyStats,
+        setDailyStats,
+      error,
+    setError}}
     >
       {children}
     </DashboardContext.Provider>

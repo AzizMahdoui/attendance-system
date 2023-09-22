@@ -22,6 +22,10 @@ const Dashboard = () => {
     setEmployeeToVerify,
     shiftId,
     setShiftId,
+    error,
+    setError,
+    setDailyStats,
+    dailyStats
   } = useDashboardContext(); // Use the context hook to access context values
 
   useEffect(() => {
@@ -30,15 +34,22 @@ const Dashboard = () => {
     socket.on('connect', () => {
       console.log('Socket connected');
       socket.emit('fetch_daily_data', date);
+      
     });
 
     socket.on('daily_data', (data) => {
       setDailyData(data.data);
+      console.log(data)
     });
 
     socket.on('error', (errorMessage) => {
       console.error('Server Error:', errorMessage);
+      setError(errorMessage)
     });
+    socket.on("daily_stats",(stats)=>{
+        setDailyStats(stats)
+        console.log(dailyStats)
+    })
 
     socket.on('disconnect', () => {
       console.log('Socket disconnected');
@@ -53,16 +64,18 @@ const Dashboard = () => {
     setDate(new Date(e.target.value));
   };
 
-  const dailyStats = {
-    totalEmployees: 30,
-    onTimeEmployees: 18,
-    lateEmployees: 7,
-    absences: 15,
-  };
+  // const dailyStats = {
+  //   totalEmployees: 30,
+  //   onTimeEmployees: 18,
+  //   lateEmployees: 7,
+  //   absences: 15,
+  // };
 
   return (
     <div className="dashboard">
-      <Stats date={date} dailyStats={dailyStats}></Stats>
+      {(dailyStats && !error) &&(<Stats date={date} dailyStats={dailyStats.data}></Stats>)}
+      {error &&(<p>{error}</p>)}
+
       <div className="dashboard-layout">
         <DashboardHeader date={date} setDate={setDate}/>
         {/* <input onChange={handleChange} type="date" value={date.toISOString().split('T')[0]} /> */}

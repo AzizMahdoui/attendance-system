@@ -2,7 +2,8 @@ import {DailyDetails} from "../models/dailyDetails.js"
 import { Employee } from "../models/employee.js";
 import Shift from "../models/checkInCheckOut.js"
 import * as yup from 'yup';
-
+import { sendStats } from "./statsController.js";
+import { Schedule } from "../models/schedule.js";
 
 const updateSchema = yup.object().shape({
   id: yup.string().required('ID is required.'),
@@ -150,7 +151,6 @@ export const sendDailyData = async (io, socket, formattedDate) => {
     const endOfDay = new Date(formattedDate);
     endOfDay.setDate(endOfDay.getDate() + 1);
 
-    // Fetch the initial data
     const existingAttendance = await DailyDetails.find({
       date: { $gte: startOfDay, $lt: endOfDay },
     }).populate(['employeeId', 'shiftOfTheDay']);
@@ -187,7 +187,6 @@ export const sendDailyData = async (io, socket, formattedDate) => {
       io.to(socket.id).emit('daily_data', { success: true, data: existingAttendance });
     }
 
-    // Create a change stream on the DailyDetails collection with your query
     
 
   } catch (err) {
@@ -217,33 +216,25 @@ export const setupDailyDataChangeStream = (io, socket) => {
     const endOfDay = new Date(formattedDate);
     endOfDay.setDate(endOfDay.getDate() + 1);
     sendDailyData(io, socket, formattedDate);
-    const pipeline = [
-      {
-        $match: {
-          $and: [
-            {
-              operationType: { $in: ["insert", "update", "delete"] }, // Filter for insert, update, or delete operations
-            },
-            {
-              'fullDocument.date': {
-                $gte: startOfDay,
-                $lt: endOfDay,
-              },
-            },
-          ],
-        },
-      },
-    ];
-
+    sendStats(io,socket,formattedDate)
     const changeStream = DailyDetails.watch();
-
+    const statsChangeStream = Schedule.watch()
     changeStream.on('change', async (change) => {
-      // Handle changes in the specified query here
       if (change.operationType === "insert" || change.operationType === "update" || change.operationType === "delete") {
-        // Fetch and emit the updated data
-        console.log("Modified FOR NOW")
+       
         sendDailyData(io, socket, formattedDate);
+        sendStats(io,socket,formattedDate)
+
+      }
+    });
+    statsChangeStream.on('change', async (change) => {
+      if (change.operationType === "insert" || change.operationType === "update" || change.operationType === "delete") {
+       
+        sendStats(io,socket,formattedDate)
+
       }
     });
   });
 };
+
+
