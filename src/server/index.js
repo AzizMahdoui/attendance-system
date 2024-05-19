@@ -18,14 +18,14 @@ dbConnect();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const corsOptions = {
-  origin: "http://127.0.0.1:5173", // Replace with your React app's URL
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, // Enable credentials (if needed)
-  optionsSuccessStatus: 204, // Set the response status for preflight requests to 204
-};
+// const corsOptions = {
+//   origin: "http://127.0.0.1:5173", 
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   credentials: true, 
+//   optionsSuccessStatus: 204, 
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use("/", employeeRouter);
 app.use("/", dailyAttendanceRouter);
 app.use("/", shiftRouter);

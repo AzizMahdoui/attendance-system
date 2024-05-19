@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const scheduleSchema = mongoose.Schema({
-      date:{type:String,required:true},
+      date:{type:Date,required:true},
       employee: { type: mongoose.Schema.Types.ObjectId, ref: 'Employee' }, 
       shift: { type: mongoose.Schema.Types.ObjectId, ref: 'Shift' }, 
       checkInTime: { type: Date,required:true }, 

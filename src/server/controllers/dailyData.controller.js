@@ -43,18 +43,13 @@ export const listDailyData = async (req,res)=>{
             return res.json({ success: false, message: 'There are no employees' });
           }
           const defaultAttendances = await Promise.all(employees.map(async (employee, index) => {
-            const newShift = new Shift({
-              employeeId:employee._id,
-              checkIn:null,
-              checkOut:null,
-            })
+            
             const dailyData = new DailyDetails({
               employeeId: employee._id,
               date: new Date(formattedDate),
               status: 'pending',
-              shiftOfTheDay:newShift._id
+              shiftOfTheDay:null
             });
-            await newShift.save()
             await dailyData.save();
             return dailyData.populate('employeeId');
           }));
@@ -163,20 +158,14 @@ export const sendDailyData = async (io, socket, formattedDate) => {
       }
 
       const defaultAttendances = await Promise.all(employees.map(async (employee, index) => {
-        const newShift = new Shift({
-          employeeId: employee._id,
-          checkIn: null,
-          checkOut: null,
-        });
-
+        
         const dailyData = new DailyDetails({
           employeeId: employee._id,
           date: new Date(formattedDate),
           status: 'pending',
-          shiftOfTheDay: newShift._id,
+          shiftOfTheDay: null,
         });
 
-        await newShift.save();
         await dailyData.save();
 
         return dailyData.populate('employeeId');

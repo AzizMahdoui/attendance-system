@@ -1,44 +1,57 @@
 import Shift from "../models/checkInCheckOut.js"
 import {DailyDetails} from "../models/dailyDetails.js";
+import { Schedule } from "../models/schedule.js";
 
 export const checkin = async(req,res)=>{
     
     try {
-        const { date, id, status } = await req.body;
-        
+        const { date, employeeId, status } = await req.body;  
+          
         const formattedDate = new Date(date).toISOString().split('T')[0];
         const startOfDay = new Date(formattedDate);
         const endOfDay = new Date(formattedDate);
         endOfDay.setDate(endOfDay.getDate() + 1);
-    
-    
-        const employeeDailyStatus = await DailyDetails.findOne({ _id: id, date: { $gte: startOfDay, $lt: endOfDay } }).populate("employeeId")
+        const employeeDailyStatus = await DailyDetails.findOne({ employeeId: employeeId, date: { $gte: startOfDay, $lt: endOfDay } }).populate("employeeId")
         if (!employeeDailyStatus) {
           return res.json({ message: 'There is no Employee with this Id or The date of the shift is not set up yet' });
         }
-        if(employeeDailyStatus.status==="checked-in"){
-          return res.json({success:false, message: 'You have Already checked-in today' });
-    
-        }
+        const ScheduledShift = await Schedule.findOne({employee:employeeId,date: date}).populate("shift")
+        // return res.json(ScheduledShift)
+        if(!ScheduledShift || ScheduledShift.shift.status !="Scheduled"){
           const checkInShift = new Shift({
+            date:date,
             employeeId: employeeDailyStatus.employeeId,
             checkIn: new Date(),
             checkOut: null, 
-            status: status,
+            status: "Direct",
           });
           
+          if(employeeDailyStatus.status==="checked-in"){
+            return res.json({success:false, message: 'You have Already checked-in today' });
+      
+          }
           employeeDailyStatus.status = "checked-in";
           employeeDailyStatus.shiftOfTheDay=checkInShift._id
           await employeeDailyStatus.save()
           await checkInShift.save()
-          return res.json({ success: true, data: {employeeDailyStatus}, message: 'Employee have been checked in successfully' });
-    
-          
+          return res.json({ success: true, data: {checkInShift}, message: 'Employee have been checked in successfully' });
+        }else{
+          const newShift = ScheduledShift.shift
+          newShift.checkIn = new Date()
+          newShift.checkOut = null
+          newShift.status = "Direct"
+          employeeDailyStatus.status = "checked-in";
+          employeeDailyStatus.shiftOfTheDay=newShift._id
+          await employeeDailyStatus.save()
+          await newShift.save()
+          return res.json({ success: true, data: {newShift}, message: 'Employee have been checked in successfully' });
         }
+      }
        
     
     
        catch (err) {
+        console.log(err)
         return res.json({ message: 'Something Wrong Happened' });
       }
 }
@@ -83,6 +96,7 @@ export const checkout = async (req,res)=>{
     return res.json({ success: true, data: {employeeDailyStatus}, message: 'Employee have been checked out successfully' });
 
   } catch (err) {
+    console.log(err)
     return res.json({ message: "Something went wrong" });
   }
 }

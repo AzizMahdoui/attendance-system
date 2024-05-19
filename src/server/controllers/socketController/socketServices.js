@@ -5,8 +5,7 @@ import { setupDailyDataChangeStream } from "../dailyData.controller.js";
 export const initializeSocketIO = (server) => {
     const io = new Server(server, {
         cors: {
-          origin: "http://127.0.0.1:5173",
-          methods: ["GET", "POST"],
+          origin: "*"
         },
       });
   

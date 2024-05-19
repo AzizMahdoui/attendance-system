@@ -4,6 +4,7 @@ import socketIOClient from 'socket.io-client';
 import './dashboard.css';
 import Stats from './stats/Stats';
 import AttendanceModal from '../../components/Attendance/Attendance';
+import { GiBugleCall } from 'react-icons/gi';
 import DailyDataTable from './dashboard-table/Table';
 import DashboardHeader from './header/DashboardHeader';
 const Dashboard = () => {
@@ -48,6 +49,7 @@ const Dashboard = () => {
     });
     socket.on("daily_stats",(stats)=>{
         setDailyStats(stats)
+        setError("")
         console.log(dailyStats)
     })
 
@@ -74,7 +76,17 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       {(dailyStats && !error) &&(<Stats date={date} dailyStats={dailyStats.data}></Stats>)}
-      {error &&(<p>{error}</p>)}
+      {error &&(<div style={{display:"flex",justifyContent:"space-between",marginBottom:"15px"}}>
+        <div className='date'>
+            <GiBugleCall className='header-icon' size={65}/>
+            <div onClick={()=>console.log(props.date)} className='date-label'>
+            <h2>{date.toDateString()}</h2> {/* Convert date to a string for display */}
+            <p >Daily Real Time Data</p>
+            </div>
+          
+        </div>
+        <h3 style={{marginRight:"15px"}}>{error}</h3>
+      </div>)}
 
       <div className="dashboard-layout">
         <DashboardHeader date={date} setDate={setDate}/>

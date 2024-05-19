@@ -8,9 +8,8 @@ const dailyStatsSchema = new mongoose.Schema({
         onTimeEmployees: { type: Number, default: 0 }, 
         lateEmployees: { type: Number, default: 0 },
         absences: { type: Number, default: 0 },
-        day:{
-            type:mongoose.Types.ObjectId,
-            ref:"DailyDetails"
+        date:{
+           type:Date
         },
         schedule:{
             type:mongoose.Types.ObjectId,
